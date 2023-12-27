@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.mybatis.mapper.NoticeMapper">
+	<insert id="noticeInsert" parameterType="java.util.Map">
+		insert into  notice(n_no,  n_title, n_content, n_writer)
+		values(seq_notice_no.nextval, #{n_title}, #{n_content}, #{n_writer})
+	</insert>
+	<update id="noticeUpdate" parameterType="map">
+		update notice
+		      set n_title = #{n_title}
+		          ,  n_content = #{n_content}
+		          ,  n_writer = #{n_writer}
+		  where n_no = #{n_no}
+	</update>
+	<delete id="noticeDelete" parameterType="map">
+		delete from notice where n_no = #{n_no}  	
+	</delete>
+	<select id="noticeList" parameterType="map"  resultType = "map">
+		select n_no, n_title, n_content, n_writer from notice
+		<where>
+			<if test="n_no!=null">AND n_no=#{n_no}</if>
+			<if test="gubun!=null">
+				<choose>
+					<when test='gubun.equals("n_title")'>
+						AND n_title LIKE '%'||#{keyword}||'%'
+					</when>
+					<when test='gubun.equals("n_content")'>
+						AND n_content LIKE '%'||#{keyword}||'%'
+					</when>
+					<when test='gubun.equals("n_writer")'>
+						AND n_writer LIKE '%'||#{keyword}||'%'
+					</when>
+				</choose>
+			</if>
+		</where>
+		order by n_no desc
+	</select> 
+</mapper>

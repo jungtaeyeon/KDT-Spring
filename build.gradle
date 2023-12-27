@@ -1,0 +1,61 @@
+plugins {
+	id 'java'
+	id 'war'
+	id 'org.springframework.boot' version '3.1.6'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+  
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
+
+  // implementation 'javax.servlet:javax.servlet-api:4.0.1'
+  // implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '2.0.0'
+  // implementation 'jakarta.servlet:jakarta.servlet-api'
+  // implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api'
+  // implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl'
+
+  // implementation 'jakarta.servlet:jakarta.servlet-api:5.0.0' // Jakarta EE의 Servlet API
+  // implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:2.0.0' // Jakarta EE의 JSTL 구현체
+  // implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:2.0.0' // Jakarta EE의 JSTL API
+  implementation 'jakarta.el:jakarta.el-api:5.0.1'
+  
+  implementation 'jakarta.servlet:jakarta.servlet-api:6.0.0'
+  implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0'
+  implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1'
+
+  implementation 'com.zaxxer:HikariCP:5.1.0'
+  implementation group: 'com.google.code.gson', name: 'gson', version: '2.9.0'
+  implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+  runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+  compileOnly 'org.projectlombok:lombok'
+  developmentOnly 'org.springframework.boot:spring-boot-devtools'
+  annotationProcessor 'org.projectlombok:lombok'
+  providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+tasks.named('bootBuildImage') {
+	builder = 'paketobuildpacks/builder-jammy-base:latest'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

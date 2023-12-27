@@ -1,0 +1,2 @@
+rubber=com.example.demo.di.RubberDuck
+wood=com.example.demo.di.WoodDuck

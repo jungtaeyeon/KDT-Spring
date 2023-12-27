@@ -1,0 +1,17 @@
+서블릿이 아니더라도 웹 서비스를 충분히 제공할 수 있게 되었다.
+request, response가 없어도 가능해졌다. -> 상속을 받지 않아도 된다.
+상속을 왜 받았어야 했을까?? -> doGet, doPost, doPut, doDelete
+ㄴ> 공통점은 뭘까?? -> 메소드 오버라이딩
+doGet, doPost, doPut, doDelete 아니더라도 요청을 처리할 수 있다.
+결합도를 낮춘다. 느슨한 결합을 위해서 상속을 포기한다.
+우리는 상속을 받아서 처리해온 것이 스프링의 늘 고민이었다.
+pojo3 -> ActionSupport - 메소드 이름이 doGet이하가 아니더라도
+req, res를 사용할 수 있게 되었다. -> HandlerMapping추가됨에 따라서
+-> 여기서 if문을 가져감 -> 원래 XXXController에 있었다.
+
+우리는 이제 상속은 그만
+@어노테이션을 사용하는것 만으로도 상속의 모습을 벗겨내었다.
+
+컨트롤계층을 지원하는 어노테이션
+@Controller
+@RestController

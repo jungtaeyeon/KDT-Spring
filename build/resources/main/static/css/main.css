@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+  border: 1px solid red;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto;
+}
+
+.main_header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.main {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  width: 100%;
+  border: 2px solid lightgray;
+  border-radius: 20px;
+  padding: 10px;
+  max-width: 1200px;
+  min-height: 450px;
+  justify-content: space-between;
+}
+
+.mapwrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.map {
+  max-width: 500px;
+  height: 400px;
+  margin-bottom: 20px;
+  border: 2px solid lightgray;
+  border-radius: 20px;
+}
+
+.main_footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.btnGeoloc {
+    border-radius: 10px;
+    border: 1px solid white;
+    background-color: rgb(105, 175, 245);
+    color: white;
+    font-weight: bold;
+    width: 80px;
+    height: 38px;
+}
+
+.btnGeoloc:hover {
+    background-color: rgb(58, 129, 200);
+}
